@@ -1,1 +1,0 @@
-// Este archivo contiene el código JavaScript principal para la funcionalidad del sitio web.
