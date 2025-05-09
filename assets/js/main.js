@@ -12,21 +12,35 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initMap() {
-    // Coordenadas de tu ubicación
-    const ubicacion = {
-        lat: 20.540406232013037,
-        lng: -100.81835726107003
-    };
-    
-    // Crear el mapa
-    const map = new google.maps.Map(document.querySelector('#mapa iframe'), {
-        zoom: 16,
-        center: ubicacion
-    });
-    
-    // Añadir marcador
-    const marker = new google.maps.Marker({
-        position: ubicacion,
-        map: map
-    });
+    try {
+        // Coordenadas de tu ubicación
+        const ubicacion = {
+            lat: 20.540406232013037,
+            lng: -100.81835726107003
+        };
+        
+        // Esperar a que el iframe esté cargado
+        const iframeContainer = document.getElementById('mapa');
+        if (!iframeContainer) {
+            console.error('No se encontró el contenedor del mapa');
+            return;
+        }
+
+        // Crear el mapa
+        const map = new google.maps.Map(iframeContainer, {
+            zoom: 16,
+            center: ubicacion,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        
+        // Añadir marcador
+        new google.maps.Marker({
+            position: ubicacion,
+            map: map,
+            title: 'Gomar'
+        });
+
+    } catch (error) {
+        console.error('Error inicializando el mapa:', error);
+    }
 }

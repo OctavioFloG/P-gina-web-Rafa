@@ -5,21 +5,65 @@ body {
     line-height: 1.6;
 }
 
-header {
-    background: linear-gradient(to right, #1a1a1a, #333);
-    color: #fff;
-    padding: 1.5rem 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-header nav {
+/* Navegación */
+nav {
     position: sticky;
     top: 0;
     z-index: 1000;
     background: linear-gradient(to right, #1a1a1a, #333);
     width: 100%;
     padding: 1rem 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav select {
+    background: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 1em;
+    padding-right: 1.5em;
+}
+
+nav select:hover {
+    background-color: rgba(255, 255, 255, 0.074);
+}
+
+nav select:focus {
+    outline: none;
+}
+
+nav select option {
+    background-color: #333;
+    color: #fff;
+}
+
+header {
+    background: linear-gradient(to right, #1a1a1a, #333);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1.5rem;
 }
 
 header nav ul {
