@@ -1,46 +1,37 @@
-// Este archivo contiene el código JavaScript principal para la funcionalidad del sitio web.
-
+// Intersection Observer para lazy loading de imágenes
 document.addEventListener('DOMContentLoaded', function() {
-    const serviciosSelect = document.getElementById('servicios');
+    const lazyImages = document.querySelectorAll('[data-src]');
     
-    serviciosSelect.addEventListener('change', function() {
-        const url = this.value;
-        if (url) {
-            window.location.href = url;
-        }
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '50px 0px',
+        threshold: 0.1
     });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
 });
 
-function initMap() {
-    try {
-        // Coordenadas de tu ubicación
-        const ubicacion = {
-            lat: 20.540406232013037,
-            lng: -100.81835726107003
-        };
-        
-        // Esperar a que el iframe esté cargado
-        const iframeContainer = document.getElementById('mapa');
-        if (!iframeContainer) {
-            console.error('No se encontró el contenedor del mapa');
-            return;
-        }
-
-        // Crear el mapa
-        const map = new google.maps.Map(iframeContainer, {
-            zoom: 16,
-            center: ubicacion,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        
-        // Añadir marcador
-        new google.maps.Marker({
-            position: ubicacion,
-            map: map,
-            title: 'Gomar'
-        });
-
-    } catch (error) {
-        console.error('Error inicializando el mapa:', error);
-    }
+// Precarga de imágenes críticas
+function preloadImages(images) {
+    images.forEach(image => {
+        const img = new Image();
+        img.src = image;
+    });
 }
+
+// Lista de imágenes críticas (visibles en el primer viewport)
+const criticalImages = [
+    '/assets/images/hero-image.jpg',
+    '/assets/images/logo.png'
+];
+
+// Precargar imágenes críticas
+preloadImages(criticalImages);
