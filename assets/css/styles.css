@@ -6,11 +6,11 @@
 }
 
 /* Importar fuentes elegantes de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;700&family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 /* Variables tipográficas y colores base */
 :root {
-  --font-heading: 'Lora', serif;
+  --font-heading: 'Oswald', sans-serif;
   --font-body: 'Open Sans', sans-serif;
   --color-primary: #1f3b57;
   --color-secondary: #4f6d7a;
