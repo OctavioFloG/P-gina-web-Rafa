@@ -87,6 +87,14 @@ a:hover {
   text-decoration: underline;
 }
 
+hr {
+    border: none; /* Elimina el borde predeterminado */
+    height: 8px; /* Define el grosor */
+    background: linear-gradient(to right, #181918, #e62724); /* Gradiente de color */
+    margin: 2rem 0; /* Espaciado superior e inferior */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
 /* Botones */
 button,
 .btn {
